@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Client Credentials</title>
+</head>
+<body>
+	<div id="wrapper">
+		<form method="POST">
+			<input type="submit" id="resources" value="Obtener Recursos" />
+		</form>
+	</div>
+
+	<script>
+
+		(function () {
+
+			'use strict';
+
+			let resources = document.getElementById('resources');
+
+			resources.addEventListener('click', function (e) {
+				e.preventDefault();
+				let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImMxOWFiMWEyMWFjZDI2ODVjMWRjNDQ3YzQ5YmE0MjBhNzdkMjAyNzQ5NTRiNGU2NTFhNGVhOGMxMjI1NDg2NTBmZmI5MmIwMzM1MmJmZGE3In0.eyJhdWQiOiIyIiwianRpIjoiYzE5YWIxYTIxYWNkMjY4NWMxZGM0NDdjNDliYTQyMGE3N2QyMDI3NDk1NGI0ZTY1MWE0ZWE4YzEyMjU0ODY1MGZmYjkyYjAzMzUyYmZkYTciLCJpYXQiOjE1NjM1ODk3ODcsIm5iZiI6MTU2MzU4OTc4NywiZXhwIjoxNTk1MjEyMTg2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.sUfn5Ar1_22UD8xCgtgb_UmTp7NHiGWXGxpDea35CGqtYMS9l0cMuH6meqartecy6hk6F2unOr9VyUhSrIyDIHCA6UM-alNlT7AWBf-TfLL3i-zN2ici99HQ3bQXHMtWR-T9C8ve7pw0omE9PIWJQezFOh2fnHkNAROD_e4b7BysZL6VYvYrN9EnjRd0bJAtlwPTpBAuIxTEZA89uqMggiYpoIwwMO_T_-xu2fpL23J-SxDcmFCi0Ryzohh1fdsPwg607EOqaH-N3FA3odoSQDX3VfWXAtr99DNnBV1j9TYqIVfKS-Ix-FY3VgNe3tlmsQrE3qPGvED5c_h1ISGTmDNznDI2igni7QIZdaDZbGIlwSXlFkYmV8v_xbzgMM-xnV10XwDq_413-vGnNhK-6PZTezO7UrcjfyjbbxvNqUWdkgGQigECzQFdbVPw97HBan0dyqCMM7KJKtiET7r5mdVGcaC0SvZYScUGAu-r5NK5BLv0rUyHXh9cJP1EO9JtquZbcpFahK-d_2hLSX7MQ3UqdKSVtChcxY00GZnplRhiPt91DrcZmTopakC-fKhWzKgT8KfJySnF_RFHobXWAotTJSb7J5ttL2K6YZaxODuGMHMMaYm-k_EvBh7G3LNc3gLPxCcGVSPo30oel0zuP3qMMUynoMtd79uU9L-HRWU';
+
+				fetch('http://industrial-old.uru.ac.th:8080/api/clients/posts', {
+					method: 'GET',
+					headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }
+				})
+				.then(response => {
+					return response.json();
+				})
+				.then(data => {
+					console.log(data);
+				})
+			});
+
+		})();
+
+	</script>
+</body>
+</html>
